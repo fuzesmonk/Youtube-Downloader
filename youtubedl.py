@@ -1,8 +1,10 @@
 from pytube import YouTube
+from gui import video
 import os
 
+youtubedl_title = "Youtube Downloader"
 def downloader():
-    video = input("Enter Video Link: ")
+    #video = input("Enter Video Link: ")
     video = YouTube(video)
     confirmation = input(f"Is this the title of the video you want to download(Y/N)? {video.title}: ") 
     if confirmation == "Y":
