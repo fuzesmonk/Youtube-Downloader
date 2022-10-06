@@ -1,10 +1,21 @@
 import os
-from packagecheck import package_check
+import sys
+import subprocess
+import pkg_resources
 needed_packages = 'pytube'
-package_check()
+class packagecheck:    
+    def package_check(): 
+        required = {needed_packages}
+        installed = {pkg.key for pkg in pkg_resources.working_set}
+        missing = required - installed 
+
+        if missing:
+             python = sys.executable
+             subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
+packagecheck.package_check()
+
 
 from pytube import YouTube
-
 class ytdl :
     def downloader():
         video = input("Enter Video Link: ")
@@ -27,13 +38,3 @@ class ytdl :
         videodownload.download()
         
 ytdl.downloader()
-
-#moving the file
-
-movecheck = input(f"Would you like to move the file {ytdl.videotitle} (Y/N)? ")
-if movecheck == "Y":
-    filetitle = ytdl.videotitle
-
-
-
-
